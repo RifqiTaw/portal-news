@@ -1,0 +1,17 @@
+#background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Supaya tidak mengganggu interaksi pengguna */
+  }
+  
+  .container {
+    position: relative;
+    z-index: 10;
+  }
+  nav {
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
