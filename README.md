@@ -1,32 +1,25 @@
-<<<<<<< HEAD
-# portal-news
-an angular application that displays the new york times news portal
-=======
-# PortalNews
+# Portal Berita / News Portal
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+Aplikasi **Portal Berita** ini adalah aplikasi berita sederhana yang dibangun menggunakan Angular 18 (standalone components). Sumber berita diambil dari **NY Times API** untuk berita populer dan berita berdasarkan kategori. Aplikasi ini memanfaatkan **async/await**, **Tailwind CSS** untuk styling, dan **Three.js** untuk animasi partikel latar belakang.
 
-## Development server
+## Fitur Utama
+- **REST API**: Mengambil data berita populer dan berita per kategori dari API NY Times.
+- **Async & Promise**: Mengelola fetch berita populer dan per kategori dengan async dan promise.
+- **Styling**: Menggunakan Tailwind CSS untuk antarmuka yang responsif dan bersih.
+- **Routing**: Implementasi routing untuk menavigasi ke komponen `HomeComponent`.
+- **State Management**: Menggunakan `BehaviorSubject` dari RxJS untuk state management.
+- **Animasi**: Partikel animasi latar belakang menggunakan Three.js.
+- **GIT**: Menggunakan Git untuk version control dan penyimpanan di GitHub serta deployment di Vercel.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## Prasyarat
+- **Node.js** (versi 14 atau lebih baru)
+- **Angular CLI** (install dengan `npm install -g @angular/cli`)
+- **API Key dari NY Times**: Daftar di [NY Times Developer Portal](https://developer.nytimes.com/) untuk mendapatkan API Key.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
->>>>>>> c4c1129 (initial commit)
+## Instalasi
+1. **Clone Repository**:
+   ```bash
+   git clone https://github.com/RifqiTaw/portal-news
+   cd portal-news
