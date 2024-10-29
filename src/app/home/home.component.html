@@ -8,21 +8,16 @@
   <!-- Navbar -->
   <nav class="bg-white border-b border-gray-200 py-4">
     <div class="container mx-auto px-4 flex justify-between items-center">
-      <!-- Left - Date and Location -->
       <div class="text-gray-500 text-sm">
         <p>Saturday, October 26, 2024</p>
         <p>Today's Paper</p>
       </div>
-
-      <!-- Center - Logo -->
       <a
         href="#"
         class="text-4xl font-bold text-center text-gray-900 flex-auto"
       >
         The New York Times
       </a>
-
-      <!-- Right - Stock/Nasdaq Information -->
       <div class="text-sm text-green-600">
         Nasdaq <span class="text-green-600">+0.56%</span> ↑
       </div>
@@ -48,23 +43,26 @@
 
   <!-- Main Content Section -->
   <div class="container mx-auto p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
-    <!-- Left Column - Category News (lebih lebar) -->
+    <!-- Left Column - Category News -->
     <div class="lg:col-span-2">
       <h1 class="text-4xl font-bold mb-8">
         {{ selectedCategory | titlecase }} News
       </h1>
-      
-      <!-- loading spinner -->
+
       <div *ngIf="isLoading" class="flex justify-center items-center py-8">
         <div
           class="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-500"
         ></div>
       </div>
 
-      <!-- main content -->
       <div *ngIf="!isLoading" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div
-          *ngFor="let article of categoryArticles$ | async"
+          *ngFor="
+            let article of (categoryArticles$ | async)?.slice(
+              0,
+              visibleCategoryArticles
+            )
+          "
           class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition"
         >
           <img
@@ -80,18 +78,31 @@
             [href]="article.url"
             target="_blank"
             class="text-blue-500 hover:underline"
-            >Read more</a
           >
+            Read more
+          </a>
         </div>
       </div>
+
+      <button
+        (click)="loadMoreCategoryArticles()"
+        class="mt-4 px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
+      >
+        Load More
+      </button>
     </div>
 
-    <!-- Right Column - Top Most News (lebih kecil dan 1 kolom) -->
+    <!-- Right Column - Top Most News -->
     <div class="lg:col-span-1">
       <h1 class="text-4xl font-bold mb-8">Top Most News</h1>
       <div class="space-y-6">
         <div
-          *ngFor="let article of topMostArticles$ | async"
+          *ngFor="
+            let article of (topMostArticles$ | async)?.slice(
+              0,
+              visibleTopMostArticles
+            )
+          "
           class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition"
         >
           <img
@@ -107,10 +118,18 @@
             [href]="article.url"
             target="_blank"
             class="text-blue-500 hover:underline"
-            >Read more</a
           >
+            Read more
+          </a>
         </div>
       </div>
+
+      <button
+        (click)="loadMoreTopMostArticles()"
+        class="mt-4 px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
+      >
+        Load More
+      </button>
     </div>
   </div>
 </div>
