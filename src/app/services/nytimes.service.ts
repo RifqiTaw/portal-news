@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NytimesService {
-  private apiKey = 'J5GStISnA3sZsgnsXzykd4rPvu03SPkG';
+  private apiKey = environment.nyTimesApiKey;
   private topMostUrl = `https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=${this.apiKey}`;
   private categoryUrl = `https://api.nytimes.com/svc/topstories/v2`; // URL dasar untuk Top Stories
 
