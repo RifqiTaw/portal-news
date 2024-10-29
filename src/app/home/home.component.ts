@@ -8,14 +8,18 @@ import * as THREE from 'three';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   categories: string[] = ['home', 'world', 'business', 'arts', 'opinion'];
   selectedCategory: string = 'home';
   isLoading: boolean = false;
 
-  // Pindahkan inisialisasi Observable ke dalam constructor
+  // Initial visible items
+  visibleCategoryArticles: number = 4;
+  visibleTopMostArticles: number = 1;
+
+  // Observables
   topMostArticles$;
   categoryArticles$;
 
@@ -23,7 +27,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private readonly nytimesService: NytimesService,
     private elRef: ElementRef
   ) {
-    // Inisialisasi Observable di dalam constructor
     this.topMostArticles$ = this.nytimesService.topMostArticles$;
     this.categoryArticles$ = this.nytimesService.categoryArticles$;
   }
@@ -50,6 +53,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.nytimesService.categoryArticles$.subscribe(() => {
       this.isLoading = false;
     });
+  }
+
+  loadMoreCategoryArticles(): void {
+    this.visibleCategoryArticles += 5;
+  }
+
+  loadMoreTopMostArticles(): void {
+    this.visibleTopMostArticles += 5;
   }
 
   createScene(): void {
