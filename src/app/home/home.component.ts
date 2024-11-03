@@ -101,9 +101,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.visibleTopMostArticles += 5;
   }
 
-  onSearch(query: string): void {
-    this.searchQuery$.next(query.toLowerCase());
-    console.log('seach', this.searchQuery$);
+  onSearch(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const query = input.value.toLowerCase();
+    this.searchQuery$.next(query);
   }
 
   createScene(): void {
